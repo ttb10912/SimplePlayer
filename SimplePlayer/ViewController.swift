@@ -7,19 +7,51 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class ViewController: UIViewController {
+    var audio = AVAudioPlayer()
+    
+    @IBOutlet weak var btn_Play: UIButton!
+
+    @IBOutlet weak var sld_Volume: UISlider!
+    
+    var musicPlay:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        audio = try! AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("music", ofType: ".mp3")!))
+        audio.prepareToPlay()
+        
+        addThumpImg4Sld()
+    }
+    func addThumpImg4Sld()  {
+        sld_Volume.setThumbImage(UIImage(named: "thumb.png"), forState: .Normal)
+        sld_Volume.setThumbImage(UIImage(named: "thumbHightLight.png"), forState: .Highlighted)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func act_Volume(sender: UISlider) {
+        audio.volume = sender.value
+        
     }
+    
+    
+    @IBAction func btn_Play(sender: AnyObject) {
+        if (musicPlay == false) {
+            audio.play()
+            btn_Play.setBackgroundImage(UIImage(named: "pause.png"), forState: .Normal)
+            musicPlay = true
 
+        } else {
+            audio.pause()
+            btn_Play.setBackgroundImage(UIImage(named: "play.png"), forState: .Normal)
+            musicPlay = false
+
+
+        }
+    }
+    
 
 }
 
