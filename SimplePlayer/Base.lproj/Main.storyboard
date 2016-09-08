@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,18 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYn-Zu-p87">
-                                <rect key="frame" x="145" y="236" width="30" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="8ZL-V9-Pz0"/>
-                                    <constraint firstAttribute="width" constant="30" id="b0Z-P1-Ysf"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="play.png"/>
-                                <connections>
-                                    <action selector="btn_Play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j1J-ur-zRx"/>
-                                </connections>
-                            </button>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="miniVolume.png" maximumValueImage="maxVolume.png" translatesAutoresizingMaskIntoConstraints="NO" id="9gX-uT-74O">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="miniVolume.png" maximumValueImage="maxVolume.png" translatesAutoresizingMaskIntoConstraints="NO" id="9gX-uT-74O">
                                 <rect key="frame" x="23" y="269" width="275" height="31"/>
                                 <color key="minimumTrackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="maximumTrackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,20 +26,40 @@
                                     <action selector="act_Volume:" destination="BYZ-38-t0r" eventType="valueChanged" id="ImZ-d6-LNC"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfO-ry-7ql">
+                                <rect key="frame" x="6" y="192" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Nxg-2t-Tzm">
+                                <rect key="frame" x="48" y="188" width="225" height="31"/>
+                                <connections>
+                                    <action selector="sld_ChangeTime:" destination="BYZ-38-t0r" eventType="valueChanged" id="giN-yW-0S2"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcl-hA-siP">
+                                <rect key="frame" x="273" y="192" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYn-Zu-p87">
+                                <rect key="frame" x="145" y="236" width="30" height="25"/>
+                                <state key="normal" backgroundImage="play.png"/>
+                                <connections>
+                                    <action selector="btn_Play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j1J-ur-zRx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.03872157759" green="0.1776783713" blue="0.28848157050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.92618189100000003" green="0.0090352641619999997" blue="0.01770637207" alpha="0.67960438830000003" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="9gX-uT-74O" firstAttribute="top" secondItem="zYn-Zu-p87" secondAttribute="bottom" constant="8" id="DZQ-mp-7yp"/>
-                            <constraint firstItem="9gX-uT-74O" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JIu-lt-y65"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="9gX-uT-74O" secondAttribute="trailing" constant="5" id="PMD-5z-icX"/>
-                            <constraint firstItem="9gX-uT-74O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="Sev-KL-J61"/>
-                            <constraint firstItem="9gX-uT-74O" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bfw-Yd-ykE"/>
-                            <constraint firstItem="zYn-Zu-p87" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qqt-E0-1A4"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btn_Play" destination="zYn-Zu-p87" id="avn-o4-Ow7"/>
+                        <outlet property="lbl_CurrentTime" destination="FfO-ry-7ql" id="cyk-HY-hjk"/>
+                        <outlet property="lbl_TotalTime" destination="Zcl-hA-siP" id="Z1P-pi-x8r"/>
+                        <outlet property="sld_Duration" destination="Nxg-2t-Tzm" id="y7t-fX-dOL"/>
                         <outlet property="sld_Volume" destination="9gX-uT-74O" id="4XW-5I-fcf"/>
                     </connections>
                 </viewController>
