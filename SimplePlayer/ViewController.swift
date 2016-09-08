@@ -22,8 +22,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var sld_Volume: UISlider!
     
     @IBOutlet weak var sld_Duration: UISlider!
+    @IBOutlet weak var swch_Repeat: UISwitch!
     
     var musicPlay:Bool = false
+    
+    
     
     var minutes = 0
     var seconds = 0
@@ -69,7 +72,6 @@ class ViewController: UIViewController {
         let timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(updateCurrentTime), userInfo: nil, repeats: true)
         
         audio.prepareToPlay()
-        print(audio.duration/60)
         
         addThumpImg4Sld()
         
@@ -79,11 +81,8 @@ class ViewController: UIViewController {
         
         
         
-        self.sld_Duration.value = Float(audio.currentTime/audio.duration)
-        
         seconds = Int(String(format: "%1.0f", audio.currentTime%60))!
-        minutes = Int(String(format: "%1.0f", audio.currentTime/60))!
-        
+        minutes = Int(audio.currentTime/60)
         if (seconds < 10 && minutes < 10 )
         {
             self.lbl_CurrentTime.text = "0\(minutes):0\(seconds)"
@@ -101,23 +100,48 @@ class ViewController: UIViewController {
             }
             else
             {
-                self.lbl_CurrentTime.text = "\(minutes):\(seconds)"
-            }
+                if (seconds == 60) {
+                    seconds = 0
+                    minutes + 1
+                    self.lbl_CurrentTime.text = "\(minutes):\(seconds)"
+                    
+                }
+                else
+                {
+                    self.lbl_CurrentTime.text = "\(minutes):\(seconds)"
+
+                }
+                            }
             
        
 
             
         }
+        if (swch_Repeat.on == true) {
+            
+            audio.numberOfLoops = -1
+            
+        }
+            
+        else
+        {
+            audio.numberOfLoops = 0
+            if (audio.currentTime == audio.duration) {
+                btn_Play.setBackgroundImage(UIImage(named: "play.png"), forState: .Normal)
+                
+            }
+        }
+
         
-        
-        
-        
-        
-        
+        self.sld_Duration.value = Float(audio.currentTime/audio.duration)
         sld_Duration.value = Float(audio.currentTime)
+
+        
     }
     
     
+    @IBAction func act_Repeat(sender: UISwitch) {
+            }
     
     @IBAction func sld_ChangeTime(sender: UISlider) {
         sld_Duration.maximumValue = Float(audio.duration)

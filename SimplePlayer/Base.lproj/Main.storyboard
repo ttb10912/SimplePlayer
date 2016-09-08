@@ -51,6 +51,12 @@
                                     <action selector="btn_Play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j1J-ur-zRx"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geJ-L1-nsT">
+                                <rect key="frame" x="204" y="233" width="51" height="31"/>
+                                <connections>
+                                    <action selector="act_Repeat:" destination="BYZ-38-t0r" eventType="valueChanged" id="eiy-cy-1zB"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="0.03872157759" green="0.1776783713" blue="0.28848157050000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.92618189100000003" green="0.0090352641619999997" blue="0.01770637207" alpha="0.67960438830000003" colorSpace="calibratedRGB"/>
@@ -61,6 +67,7 @@
                         <outlet property="lbl_TotalTime" destination="Zcl-hA-siP" id="Z1P-pi-x8r"/>
                         <outlet property="sld_Duration" destination="Nxg-2t-Tzm" id="y7t-fX-dOL"/>
                         <outlet property="sld_Volume" destination="9gX-uT-74O" id="4XW-5I-fcf"/>
+                        <outlet property="swch_Repeat" destination="geJ-L1-nsT" id="PTd-mK-c4x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
