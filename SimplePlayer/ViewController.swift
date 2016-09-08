@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController ,AVAudioPlayerDelegate{
     var audio = AVAudioPlayer()
     
     @IBOutlet weak var btn_Play: UIButton!
@@ -68,6 +68,8 @@ class ViewController: UIViewController {
         sld_Duration.minimumValue = 0
         
         sld_Duration.maximumValue = Float(audio.duration)
+        
+        audio.delegate = self
         
         let timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(updateCurrentTime), userInfo: nil, repeats: true)
         
@@ -159,7 +161,9 @@ class ViewController: UIViewController {
         audio.volume = sender.value
         
     }
-    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        btn_Play.setBackgroundImage(UIImage(named: "play.png"), forState: .Normal)
+    }
     
     @IBAction func btn_Play(sender: AnyObject) {
         if (musicPlay == false) {
